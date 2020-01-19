@@ -4,11 +4,11 @@ import * as api from './../services/example'
 import Mock from 'mockjs'
 class Product extends React.Component {
     componentDidMount () {
-        console.log(Mock.mock({
-            'list|1-10': [{
-                'id|+1': 1
-            }]
-        }))
+        // console.log(Mock.mock({
+        //     'list|1-10': [{
+        //         'id|+1': 1
+        //     }]
+        // }))
         api.getProlist()
         .then(res => {
             // console.log(res)

@@ -13,6 +13,7 @@ demo/router-more/node_modules
 COMPANY
 dav/antd-admin/node_modules
 dav/demo/node_modules
+dav/dva-form/node_modules
 hooks/hooks/node_modules
 program/dva-demo/node_modules
 program/program_1/node_modules

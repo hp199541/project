@@ -8,11 +8,12 @@ export default {
   },
   reducers: {
     Tablelist(state, action) {
+      // console.log(action.data)
       return { ...state, ...action.data };
     },
     remove(state,action) {
       // console.log(state,action.data)
-      // action.payload.splice(0,1)
+      action.payload.splice(0,1)
       // console.log(state,action.data)
       return { ...state, ...action.data };
     }

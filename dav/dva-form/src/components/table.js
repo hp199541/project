@@ -7,6 +7,10 @@ export default class Tablelist extends React.Component {
         this.props.dispatch({
             type:'tablelist/getTablelist',
         })
+        console.log(this.props)
+        this.setState({
+            tablelist:this.props.tablelist
+        })
     }
     reduce(params) {
         // console.log(params)
@@ -14,15 +18,16 @@ export default class Tablelist extends React.Component {
             type:'tablelist/removeTablelist',
             payload:this.props.tablelist
         })
-        this.render()
+        this.setState({
+            tablelist:this.props.tablelist
+        })
     }
     render () {
-        console.log(this.props.tablelist)
-        const {tablelist} = this.props
+        console.log(this.props)
         return (
-            this.props.tablelist ? 
+            this.props.tablelist ?
             <div>
-               <Table dataSource={tablelist}>
+               <Table dataSource={this.props.tablelist}>
                     <Column title="First Name" dataIndex="firstName" key="firstName" />
                     <Column title="Last Name" dataIndex="lastName" key="lastName" />
                     <Column title="Age" dataIndex="age" key="age" />

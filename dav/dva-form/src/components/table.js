@@ -22,6 +22,22 @@ export default class Tablelist extends React.Component {
             tablelist:this.props.tablelist
         })
     }
+    add() {
+        // console.log(params)
+        this.props.dispatch({
+            type:'tablelist/addTablelist',
+            payload: {
+                key: '5',
+                firstName: 'John',
+                lastName: 'Brown',
+                age: 32,
+                address: 'New York No. 1 Lake Park'
+              }
+        })
+        this.setState({
+            tablelist:this.props.tablelist
+        })
+    }
     render () {
         console.log(this.props)
         return (
@@ -37,7 +53,7 @@ export default class Tablelist extends React.Component {
                     key="action"
                     render={(text, record) => (
                         <span>
-                        <a>增加</a>
+                        <a onClick={this.add.bind(this,record)}>增加</a>
                         <Divider type="vertical" />
                         <a onClick={this.reduce.bind(this,record)}>删除</a>
                         </span>

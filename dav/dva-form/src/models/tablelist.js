@@ -16,6 +16,10 @@ export default {
       action.payload.splice(0,1)
       // console.log(state,action.data)
       return { ...state, ...action.data };
+    },
+    add(state,action) {
+      state.data.push(action.payload)
+      return state;
     }
   },
 
@@ -31,6 +35,12 @@ export default {
     *removeTablelist({ payload }, { call, put }) {  // eslint-disable-line
       // console.log(payload)
       yield put({ type: 'remove',
+      payload });
+      
+    },
+    *addTablelist({ payload }, { call, put }) {  // eslint-disable-line
+      console.log(payload)
+      yield put({ type: 'add',
       payload });
       
     },

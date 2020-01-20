@@ -13,8 +13,9 @@ function IndexPage(props) {
   );
 }
 const mapStatetoProps = (state) => {
+  // console.log(state.tablelist.data)
   return {
-      tablelist:state.tablelist
+      tablelist:state.tablelist.data
   }
 }
 

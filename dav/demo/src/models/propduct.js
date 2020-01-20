@@ -10,6 +10,7 @@ export default {
     reducers:{
         updatelist(state,action){
             let currentprolist = deepclone(state)
+            console.log(currentprolist)
             currentprolist.productlist.push(action.payload)
             return currentprolist
         }
@@ -26,7 +27,7 @@ export default {
          // 异步网络请求
         *updatelistHttp({ payload }, { call, put }) {  // eslint-disable-line
             const result =   yield call(api.getProlist,payload) //call的第二个参数，与上面一行的第一个参数value相同
-            console.log('result',result)
+            // console.log('result',result)
             const data = result.data
             if(data){
                 // console.log(data)

@@ -1,23 +1,44 @@
 import React from 'react'
-import { Table, Divider, Tag } from 'antd'
-import * as api from './../services/example'
+import { Table, Divider} from 'antd';
+// import * as api from './../services/example'
+const { Column} = Table;
 export default class Tablelist extends React.Component {
     componentDidMount () {
-        api.getTablelist()
-        .then(res => {
-            this.setState({
-            columns:res.data.columns,
-            data:res.data.data
-            }) 
+        this.props.dispatch({
+            type:'tablelist/getTablelist',
         })
-        
+    }
+    reduce(params) {
+        // console.log(params)
+        this.props.dispatch({
+            type:'tablelist/removeTablelist',
+            payload:this.props.tablelist
+        })
+        this.render()
     }
     render () {
-        console.log(this.state)
+        console.log(this.props.tablelist)
+        const {tablelist} = this.props
         return (
-            this.state ? 
+            this.props.tablelist ? 
             <div>
-                <Table columns={this.state.columns} dataSource={this.state.data} />
+               <Table dataSource={tablelist}>
+                    <Column title="First Name" dataIndex="firstName" key="firstName" />
+                    <Column title="Last Name" dataIndex="lastName" key="lastName" />
+                    <Column title="Age" dataIndex="age" key="age" />
+                    <Column title="Address" dataIndex="address" key="address" />
+                    <Column
+                    title="Action"
+                    key="action"
+                    render={(text, record) => (
+                        <span>
+                        <a>增加</a>
+                        <Divider type="vertical" />
+                        <a onClick={this.reduce.bind(this,record)}>删除</a>
+                        </span>
+                    )}
+                    />
+                </Table>
             </div>
             :
             <div>

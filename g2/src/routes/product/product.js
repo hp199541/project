@@ -3,7 +3,7 @@ import Product from '../../components/product'
 import {connect} from 'dva'
 class IndexPage extends React.Component {
     render() {
-        console.log('props',this.props)
+        // console.log('props',this.props)
         const {prolist,dispatch} = this.props
         return(
             <div>
